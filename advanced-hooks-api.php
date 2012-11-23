@@ -47,6 +47,19 @@ if ( ! class_exists( 'R_Hook_Handler' ) ) {
 	}
 
 	/**
+	 * @param string       $tag
+	 * @param callback     $callback
+	 * @param int          $priority
+	 * @param null         $args
+	 */
+	function remove_action_with_args( $tag, $callback, $priority = 10, $args = null ) {
+
+		$args = array_slice( func_get_args(), 3 );
+
+		R_Hook_Handler::remove_action( $tag, $priority, $args, 'action', $callback );
+	}
+
+	/**
 	 * @param string $tag
 	 * @param int    $priority
 	 * @param mixed  $return value to override filter with
@@ -56,6 +69,16 @@ if ( ! class_exists( 'R_Hook_Handler' ) ) {
 	function add_filter_return( $tag, $priority = 10, $return = false ) {
 
 		return add_filter( $tag, array( new R_Hook_Handler( $return ), 'filter' ), $priority, 0 );
+	}
+
+	/**
+	 * @param string $tag
+	 * @param int    $priority
+	 * @param mixed  $return
+	 */
+	function remove_filter_return( $tag, $priority = 10, $return = false ) {
+
+		R_Hook_Handler::remove_action( $tag, $priority, $return, 'filter' );
 	}
 
 	/**
@@ -73,6 +96,16 @@ if ( ! class_exists( 'R_Hook_Handler' ) ) {
 	/**
 	 * @param string $tag
 	 * @param int    $priority
+	 * @param mixed  $prepend
+	 */
+	function remove_filter_prepend( $tag, $priority = 10, $prepend = false ) {
+
+		R_Hook_Handler::remove_action( $tag, $priority, $prepend, 'prepend' );
+	}
+
+	/**
+	 * @param string $tag
+	 * @param int    $priority
 	 * @param mixed  $append value to concatenate at end of filtered string or append to end of filtered array
 	 *
 	 * @return bool
@@ -80,6 +113,16 @@ if ( ! class_exists( 'R_Hook_Handler' ) ) {
 	function add_filter_append( $tag, $priority = 10, $append = false ) {
 
 		return add_filter( $tag, array( new R_Hook_Handler( $append ), 'append' ), $priority, 1 );
+	}
+
+	/**
+	 * @param string $tag
+	 * @param int    $priority
+	 * @param mixed  $append
+	 */
+	function remove_filter_append( $tag, $priority = 10, $append = false ) {
+
+		R_Hook_Handler::remove_action( $tag, $priority, $append, 'append' );
 	}
 
 	/**
@@ -93,6 +136,17 @@ if ( ! class_exists( 'R_Hook_Handler' ) ) {
 	function add_filter_replace( $tag, $search, $replace, $priority = 10 ) {
 
 		return add_filter( $tag, array( new R_Hook_Handler( compact( 'search', 'replace' ) ), 'replace' ), $priority );
+	}
+
+	/**
+	 * @param string $tag
+	 * @param string $search
+	 * @param string $replace
+	 * @param int    $priority
+	 */
+	function remove_filter_replace( $tag, $search, $replace, $priority = 10 ) {
+
+		R_Hook_Handler::remove_action( $tag, $priority, compact( 'search', 'replace' ), 'replace' );
 	}
 
 	/**
