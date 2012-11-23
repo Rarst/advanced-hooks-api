@@ -32,6 +32,7 @@ Feel free to discuss and contribute to concept in [implementing advanced add_* f
 = 0.6 =
 * _(enhancement)_ changed license to MIT
 * _(enhancement)_ cleaned up coding style
+* _(enhancement)_ moved handler class to separate file
 
 = 0.5 =
 
