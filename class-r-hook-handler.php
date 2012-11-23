@@ -127,4 +127,45 @@ class R_Hook_Handler {
 
 		return $input;
 	}
+
+	/**
+	 * Remove matching handlers from specified hook and priority.
+	 *
+	 * @param string      $tag
+	 * @param int         $priority
+	 * @param mixed       $data
+	 * @param string      $method of handler class
+	 * @param string|null $callback
+	 */
+	static function remove_action( $tag, $priority, $data, $method, $callback = null ) {
+		
+		global $wp_filter;
+		
+		foreach ( $wp_filter[$tag][$priority] as $event ) {
+
+			$function = $event['function'];
+
+			/**
+			 * @var R_Hook_Handler $object
+			 */
+			if ( is_array( $function ) && is_a( $object = $function[0], __CLASS__ ) )
+					$object->remove_if_match( $tag, $priority, $event['accepted_args'], $data, $method, $callback );
+		}
+	}
+
+	/**
+	 * Unhook this instance from hook if data matches.
+	 *
+	 * @param string      $tag
+	 * @param int         $priority
+	 * @param int         $accepted_args
+	 * @param mixed       $data
+	 * @param string      $method of handler class
+	 * @param string|null $callback
+	 */
+	function remove_if_match( $tag, $priority, $accepted_args, $data, $method, $callback = null ) {
+
+		if ( $data === $this->data && $callback === $this->callback )
+			remove_action( $tag, array( $this, $method ), $priority, $accepted_args );
+	}
 }

@@ -33,6 +33,7 @@ Feel free to discuss and contribute to concept in [implementing advanced add_* f
 * _(enhancement)_ changed license to MIT
 * _(enhancement)_ cleaned up coding style
 * _(enhancement)_ moved handler class to separate file
+* _(enhancement)_ implemented removing of handler from hooks
 
 = 0.5 =
 
