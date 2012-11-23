@@ -61,66 +61,66 @@ if ( ! class_exists( 'R_Hook_Handler' ) ) {
 
 	/**
 	 * @param string $tag
-	 * @param int    $priority
 	 * @param mixed  $return value to override filter with
+	 * @param int    $priority
 	 *
 	 * @return bool
 	 */
-	function add_filter_return( $tag, $priority = 10, $return = false ) {
+	function add_filter_return( $tag, $return, $priority = 10 ) {
 
 		return add_filter( $tag, array( new R_Hook_Handler( $return ), 'filter' ), $priority, 0 );
 	}
 
 	/**
 	 * @param string $tag
-	 * @param int    $priority
 	 * @param mixed  $return
+	 * @param int    $priority
 	 */
-	function remove_filter_return( $tag, $priority = 10, $return = false ) {
+	function remove_filter_return( $tag, $return, $priority = 10 ) {
 
 		R_Hook_Handler::remove_action( $tag, $priority, $return, 'filter' );
 	}
 
 	/**
 	 * @param string $tag
-	 * @param int    $priority
 	 * @param mixed  $prepend value to concatenate at start of filtered string or unshift to start of filtered array
+	 * @param int    $priority
 	 *
 	 * @return bool
 	 */
-	function add_filter_prepend( $tag, $priority = 10, $prepend = false ) {
+	function add_filter_prepend( $tag, $prepend, $priority = 10 ) {
 
 		return add_filter( $tag, array( new R_Hook_Handler( $prepend ), 'prepend' ), $priority, 1 );
 	}
 
 	/**
 	 * @param string $tag
-	 * @param int    $priority
 	 * @param mixed  $prepend
+	 * @param int    $priority
 	 */
-	function remove_filter_prepend( $tag, $priority = 10, $prepend = false ) {
+	function remove_filter_prepend( $tag, $prepend, $priority = 10 ) {
 
 		R_Hook_Handler::remove_action( $tag, $priority, $prepend, 'prepend' );
 	}
 
 	/**
 	 * @param string $tag
-	 * @param int    $priority
 	 * @param mixed  $append value to concatenate at end of filtered string or append to end of filtered array
+	 * @param int    $priority
 	 *
 	 * @return bool
 	 */
-	function add_filter_append( $tag, $priority = 10, $append = false ) {
+	function add_filter_append( $tag, $append, $priority = 10 ) {
 
 		return add_filter( $tag, array( new R_Hook_Handler( $append ), 'append' ), $priority, 1 );
 	}
 
 	/**
 	 * @param string $tag
-	 * @param int    $priority
 	 * @param mixed  $append
+	 * @param int    $priority
 	 */
-	function remove_filter_append( $tag, $priority = 10, $append = false ) {
+	function remove_filter_append( $tag, $append, $priority = 10 ) {
 
 		R_Hook_Handler::remove_action( $tag, $priority, $append, 'append' );
 	}
