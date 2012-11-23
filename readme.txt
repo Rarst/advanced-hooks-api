@@ -25,7 +25,7 @@ This plugins offers number of custom `add_*` functions to hook more elaborate ev
 
 Both implementation and set of functions are experimental.
 
-Feel free to discuss and contribute to concept in [implementing advanced add_* function wrappers](http://wordpress.stackexchange.com/q/11231/847) question on WPSE.
+[Development repository and issue tracker](https://bitbucket.org/Rarst/advanced-hooks-api/).
 
 == Changelog ==
 
