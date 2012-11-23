@@ -2,8 +2,8 @@
 Contributors: Rarst
 Tags: hooks
 Requires at least: 3.2.1
-Tested up to: 3.2.1
-Stable tag: 0.5
+Tested up to: 3.4.2
+Stable tag: trunk
 
 Set of (experimental) wrappers that allow to hook more elaborate events without coding intermediary functions.
 
@@ -27,12 +27,10 @@ Both implementation and set of functions are experimental.
 
 Feel free to discuss and contribute to concept in [implementing advanced add_* function wrappers](http://wordpress.stackexchange.com/q/11231/847) question on WPSE.
 
-== Installation ==
-
-1. Upload `advanced-hooks-api` folder to the `/wp-content/plugins/` directory
-2. Activate the plugin through the `Plugins` menu in WordPress
-
 == Changelog ==
+
+= 0.6 =
+* _(enhancement)_ changed license to MIT
 
 = 0.5 =
 
