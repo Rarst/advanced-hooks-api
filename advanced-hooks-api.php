@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/extend/plugins/advanced-hooks-api/
 Description: Set of (experimental) wrappers that allow to hook more elaborate events without coding intermediary functions.
 Author: Andrey "Rarst" Savchenko
 Author URI: http://www.rarst.net/
-Version: 0.6
+Version: 0.7
 License Notes: MIT
 
 Copyright (c) 2012 Andrey "Rarst" Savchenko
@@ -147,6 +147,62 @@ if ( ! class_exists( 'R_Hook_Handler' ) ) {
 	function remove_filter_replace( $tag, $search, $replace, $priority = 10 ) {
 
 		R_Hook_Handler::remove_action( $tag, $priority, compact( 'search', 'replace' ), 'replace' );
+	}
+
+	/**
+	 * Add filter to only run once.
+	 *
+	 * @param string   $tag
+	 * @param callback $callback
+	 * @param int      $priority
+	 * @param int      $accepted_args
+	 *
+	 * @return bool
+	 */
+	function add_filter_once( $tag, $callback, $priority = 10, $accepted_args = 1 ) {
+
+		return add_action( $tag, array( new R_Hook_Handler( compact( 'priority', 'accepted_args' ), $callback ), 'once' ), $priority, $accepted_args );
+	}
+
+	/**
+	 * Remove filter that runs once.
+	 *
+	 * @param string   $tag
+	 * @param callback $callback
+	 * @param int      $priority
+	 * @param int      $accepted_args
+	 */
+	function remove_filter_once( $tag, $callback, $priority = 10, $accepted_args = 1 ) {
+
+		R_Hook_Handler::remove_action( $tag, $priority, compact( 'priority', 'accepted_args' ), 'once', $callback );
+	}
+
+	/**
+	 * Add action that only runs once.
+	 *
+	 * @param string   $tag
+	 * @param callback $callback
+	 * @param int      $priority
+	 * @param int      $accepted_args
+	 *
+	 * @return bool
+	 */
+	function add_action_once( $tag, $callback, $priority = 10, $accepted_args = 1 ) {
+
+		return add_filter_once( $tag, $callback, $priority, $accepted_args );
+	}
+
+	/**
+	 * Remove action that runs once.
+	 *
+	 * @param string   $tag
+	 * @param callback $callback
+	 * @param int      $priority
+	 * @param int      $accepted_args
+	 */
+	function remove_action_once( $tag, $callback, $priority = 10, $accepted_args = 1 ) {
+
+		remove_filter_once( $tag, $callback, $priority, $accepted_args );
 	}
 
 	/**

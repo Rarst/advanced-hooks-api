@@ -2,7 +2,7 @@
 Contributors: Rarst
 Tags: hooks
 Requires at least: 3.2.1
-Tested up to: 3.4.2
+Tested up to: 3.5
 Stable tag: trunk
 
 Set of (experimental) wrappers that allow to hook more elaborate events without coding intermediary functions.
@@ -21,6 +21,7 @@ This plugins offers number of custom `add_*` functions to hook more elaborate ev
  - `add_filter_return()` - override filter with arbitrary value
  - `add_filter_prepend()` and `add_filter_append()` - hook suffix/prefix values for filtered string and arrays
  - `add_filter_replace()` - edit substrings or array values in filter
+ - `add_action_once()` and `add_filter_once()` - hook callback to only fire once
  - `add_method()` - quickly add class methods to hooks of same name
 
 Both implementation and set of functions are experimental.
@@ -28,6 +29,9 @@ Both implementation and set of functions are experimental.
 [Development repository and issue tracker](https://bitbucket.org/Rarst/advanced-hooks-api/).
 
 == Changelog ==
+
+= 0.7 =
+* _(enhancement)_ implemented `add_action_once()` and `add_filter_once()`, props Eric Mann
 
 = 0.6 =
 * _(enhancement)_ changed license to MIT

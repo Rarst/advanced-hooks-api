@@ -129,6 +129,18 @@ class R_Hook_Handler {
 	}
 
 	/**
+	 * Executes callback once and removes it from hook.
+	 *
+	 * @return mixed
+	 */
+	function once() {
+
+		remove_filter( current_filter(), array( $this, __FUNCTION__ ), $this->data['priority'] );
+
+		return call_user_func_array( $this->callback, array_slice( func_get_args(), 0, $this->data['accepted_args'] ) );
+	}
+
+	/**
 	 * Remove matching handlers from specified hook and priority.
 	 *
 	 * @param string      $tag
