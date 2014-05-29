@@ -1,9 +1,9 @@
 {
 	"name"        : "rarst/advanced-hooks-api",
-	"description" : "Set of (experimental) wrappers that allow to hook more elaborate events without coding intermediary functions",
+	"description" : "Set of (experimental) wrappers that allow to hook more elaborate WordPress events without coding intermediary functions",
 	"keywords"    : ["wordpress"],
 	"type"        : "wordpress-plugin",
-	"homepage"    : "https://bitbucket.org/Rarst/advanced-hooks-api",
+	"homepage"    : "https://github.com/Rarst/advanced-hooks-api",
 	"license"     : "MIT",
 	"authors"     : [
 		{
@@ -13,8 +13,7 @@
 		}
 	],
 	"support"     : {
-		"issues": "https://bitbucket.org/Rarst/advanced-hooks-api/issues",
-		"source": "https://bitbucket.org/Rarst/advanced-hooks-api/src"
+		"issues": "https://github.com/Rarst/advanced-hooks-api/issues"
 	},
 	"require"     : {
 		"composer/installers": "~1.0"
