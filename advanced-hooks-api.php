@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Advanced Hooks API
-Plugin URI: http://wordpress.org/extend/plugins/advanced-hooks-api/
+Plugin URI: https://github.com/Rarst/advanced-hooks-api
 Description: Set of (experimental) wrappers that allow to hook more elaborate events without coding intermediary functions.
 Author: Andrey "Rarst" Savchenko
 Author URI: http://www.rarst.net/
